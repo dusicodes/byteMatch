@@ -1,12 +1,25 @@
+import { useState } from "react";
 import PrimaryInput from "./PrimaryInput";
 
-function AuthModalScreen({ showModal }) {
+function AuthModalScreen({ showModal, isSignedUp }) {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
+  const [error, setPasswordError] = useState(null);
+  console.log(email, password, confirmPassword);
+
   const handleClose = () => {
     showModal(false);
   };
-  const isSignedUp = true;
   const handleSubmit = (e) => {
     e.preventDeafult();
+    try {
+      if (isSignedUp && password !== confirmPassword) {
+        setPasswordError("The password don't match please try again");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div
@@ -37,13 +50,33 @@ function AuthModalScreen({ showModal }) {
           {isSignedUp ? "Create an Account" : "LOG IN"}
         </h1>
         <p>
-          By clicking Login, you agree you our terms. Learn how we process your
+          By clicking submit, you agree you our terms. Learn how we process your
           data in our Privacy Policy and Cookie Policy.
         </p>
-
-        <PrimaryInput type={"email"} placeholder={"email address"} />
-        <PrimaryInput type={"password"} placeholder={"password"} />
-        <PrimaryInput type={"password"} placeholder={"repeat passwrod"} />
+        <PrimaryInput
+          id={"email"}
+          type={"email"}
+          placeholder={"email address"}
+          required={true}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <PrimaryInput
+          id={"password"}
+          type={"password"}
+          placeholder={"password"}
+          required={true}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {isSignedUp && (
+          <PrimaryInput
+            id={"password-check"}
+            type={"password-check"}
+            placeholder={"confirm passwrod"}
+            required={true}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        )}
+        <p>{error}</p>
         <button className=" self-center bg-blue-950 rounded-full p-4 text-white w-48 hover:bg-slate-400">
           SUBMIT
         </button>
