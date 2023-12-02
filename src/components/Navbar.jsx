@@ -1,15 +1,21 @@
-function Navbar({ authToken, setModal, modalScreen, setSignedUp }) {
+function Navbar({ minimal, setModal, modalScreen, setSignedUp }) {
   function handleAuth() {
-    if (authToken == false) {
-      setModal(true);
-      setSignedUp(false);
-    }
+    setModal(true);
+    setSignedUp(false);
   }
-
+  const authToken = false;
   return (
-    <nav className="w-full mt-6 px-6 flex justify-between items-center ">
-      <div>
-        <p className=" text-white font-bold text-2xl cursor-pointer">
+    <nav className="w-full mt-6 px-6 flex grow justify-between items-center ">
+      <div className="flex flex-row gap-4">
+        <img
+          className="w-10 h-10 align-center"
+          src="/src/images/byte-logo.png"
+        ></img>
+        <p
+          className={`font-bold text-4xl cursor-pointer ${
+            minimal === true ? "text-black" : "text-white"
+          } `}
+        >
           ByteMatch
         </p>
       </div>
@@ -27,14 +33,16 @@ function Navbar({ authToken, setModal, modalScreen, setSignedUp }) {
           <a href="#">About</a>
         </li>
       </ul>
-      <button
-        className=" bg-slate-200 text-blue-600  p-4
+      {!authToken && !minimal && (
+        <button
+          className=" bg-slate-200 text-blue-600  p-4
        w-32 rounded-3xl "
-        onClick={handleAuth}
-        disabled={modalScreen}
-      >
-        Log in
-      </button>
+          onClick={handleAuth}
+          disabled={modalScreen}
+        >
+          Log in
+        </button>
+      )}
     </nav>
   );
 }

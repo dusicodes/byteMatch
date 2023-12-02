@@ -59,6 +59,7 @@ function AuthModalScreen({ showModal, isSignedUp }) {
           placeholder={"email address"}
           required={true}
           onChange={(e) => setEmail(e.target.value)}
+          styles={"p-4 w-[300px] rounded-2xl border-2 border-blue-950"}
         />
         <PrimaryInput
           id={"password"}
@@ -66,6 +67,7 @@ function AuthModalScreen({ showModal, isSignedUp }) {
           placeholder={"password"}
           required={true}
           onChange={(e) => setPassword(e.target.value)}
+          styles={"p-4 w-[300px] rounded-2xl border-2 border-blue-950"}
         />
         {isSignedUp && (
           <PrimaryInput
@@ -74,6 +76,7 @@ function AuthModalScreen({ showModal, isSignedUp }) {
             placeholder={"confirm passwrod"}
             required={true}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            styles={"p-4 w-[300px] rounded-2xl border-2 border-blue-950"}
           />
         )}
         <p>{error}</p>

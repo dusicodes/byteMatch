@@ -1,4 +1,4 @@
-function PrimaryInput({ placeholder, type, id, onChange, required }) {
+function PrimaryInput({ placeholder, type, id, onChange, required, styles }) {
   return (
     <>
       <input
@@ -6,7 +6,7 @@ function PrimaryInput({ placeholder, type, id, onChange, required }) {
         required={required}
         onChange={onChange}
         placeholder={placeholder}
-        className=" p-4 w-[300px] rounded-2xl border-2 border-blue-950"
+        className={styles}
         type={type}
       ></input>
     </>

@@ -16,11 +16,12 @@ function HomePage() {
     <div className="h-screen w-screen bg-[url('src/images/home-page.jpg')] bg-cover">
       <div className="h-screen w-screen fixed bg-gradient-to-b from-black ... ">
         <Navbar
-          authToken={authToken}
           setModal={setModalScreen}
           ModalScreen={ModalScreen}
           setSignedUp={setSignedUp}
+          minimal={false}
         />
+
         <section className="h-screen w-auto relative z-0 flex-1 flex flex-col justify-center items-center">
           <div className="flex flex-col items-center justify-center">
             <h1 className=" font-extrabold text-9xl text-white">

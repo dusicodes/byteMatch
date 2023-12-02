@@ -6,3 +6,6 @@
     )
     url("/images/home-page.jpg");
 }
+.multiple-option-container input[type="radio"] {
+  display: none;
+}
