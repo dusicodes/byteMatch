@@ -1,4 +1,13 @@
-function PrimaryInput({ placeholder, type, id, onChange, required, styles }) {
+function PrimaryInput({
+  placeholder,
+  type,
+  id,
+  onChange,
+  required,
+  styles,
+  value,
+  name,
+}) {
   return (
     <>
       <input
@@ -7,6 +16,8 @@ function PrimaryInput({ placeholder, type, id, onChange, required, styles }) {
         onChange={onChange}
         placeholder={placeholder}
         className={styles}
+        value={value}
+        name={name}
         type={type}
       ></input>
     </>
