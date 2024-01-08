@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import PrimaryInput from "../components/PrimaryInput";
 import { useState } from "react";
+// this is a test comment for commit
 function OnBoarding() {
   const [formData, setFormData] = useState({
     user_id: "",
