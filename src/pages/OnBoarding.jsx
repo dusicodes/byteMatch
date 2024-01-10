@@ -23,7 +23,7 @@ function OnBoarding() {
   };
 
   const handleChangeText = (e) => {
-    console.log("e", e);
+    // console.log("e", e);
     const value = e.target.value;
     const name = e.target.name;
 
@@ -34,6 +34,9 @@ function OnBoarding() {
       [name]: value,
     }));
   };
+
+  console.log(formData);
+
   return (
     <div className="h-screen flex flex-col justify-center">
       <Navbar setModal={() => {}} showModal={false} minimal={true} />
@@ -42,7 +45,7 @@ function OnBoarding() {
         Create Account
       </h1>
       <header className="flex flex-row self-center w-[75%] h-full mt-24">
-        <section className="flex flex-col w-[50%] gap-12 ">
+        <section className="flex flex-col w-[50%] gap-6 ">
           <div className="flex flex-row gap-5 self-start justify-evenly">
             <div className="flex flex-col">
               <label htmlFor="first-name">First Name</label>
@@ -50,7 +53,7 @@ function OnBoarding() {
                 id="first-name"
                 type="text"
                 placeholder="First Name"
-                name="first-name"
+                name="first_name"
                 value={formData.first_name}
                 onChange={handleChangeText}
                 styles={
@@ -143,12 +146,44 @@ function OnBoarding() {
             </div>
           </div>
 
+          <div className="flex flex-col self-right">
+            <label>I am interested in...</label>
+            <div
+              className={
+                "multiple-option-container" + " flex flex-row gap-5 text-center"
+              }
+            >
+              <input type="radio" htmlFor="man-radio"></input>
+              <label
+                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
+                htmlFor="man-radio"
+              >
+                Man
+              </label>
+              <input type="radio" htmlFor="woman-radio"></input>
+              <label
+                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
+                htmlFor="woman-radio"
+              >
+                Woman
+              </label>
+              <input type="radio" htmlFor="more-readio"></input>
+              <label
+                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
+                htmlFor="more-radio"
+              >
+                More
+              </label>
+            </div>
+          </div>
+
           <div className="flex flex-col items-start gap-5">
             <label htmlFor="gender-profile-display">
               Show gender on my profile
             </label>
             <input id="gender-profile-display" type="checkbox"></input>
           </div>
+
           <div className="flex flex-col">
             <label htmlFor="about-me">About Me</label>
             <PrimaryInput
@@ -158,7 +193,7 @@ function OnBoarding() {
               value={formData.about}
               onChange={handleChangeText}
               styles={
-                "p-4 w-[75%] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
+                "p-4 w-[90%] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
               }
             />
           </div>
