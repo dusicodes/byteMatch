@@ -24,10 +24,11 @@ function OnBoarding() {
 
   const handleChangeText = (e) => {
     // console.log("e", e);
-    const value = e.target.value;
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     const name = e.target.name;
 
-    console.log("value" + value, "name" + name);
+    // console.log("value" + value, "name" + name);
 
     setFormData((prevState) => ({
       ...prevState,
@@ -50,6 +51,7 @@ function OnBoarding() {
             <div className="flex flex-col">
               <label htmlFor="first-name">First Name</label>
               <PrimaryInput
+                required={true}
                 id="first-name"
                 type="text"
                 placeholder="First Name"
@@ -64,6 +66,7 @@ function OnBoarding() {
             <div className=" flex flex-col">
               <label htmlFor="last-name">Last Name</label>
               <PrimaryInput
+                required={true}
                 id="last-name"
                 type="text"
                 name="last_name"
@@ -80,6 +83,7 @@ function OnBoarding() {
             <label>Birthday</label>
             <div className=" flex flex-row gap-4">
               <PrimaryInput
+                required={true}
                 id="dob-day"
                 type="number"
                 placeholder="DD"
@@ -91,6 +95,7 @@ function OnBoarding() {
                 }
               />
               <PrimaryInput
+                required={true}
                 id="dob-month"
                 type="number"
                 placeholder="MM"
@@ -102,6 +107,7 @@ function OnBoarding() {
                 }
               />
               <PrimaryInput
+                required={true}
                 id="dob-year"
                 type="number"
                 placeholder="YYYY"
@@ -122,58 +128,100 @@ function OnBoarding() {
                 "multiple-option-container" + " flex flex-row gap-5 text-center"
               }
             >
-              <input type="radio" htmlFor="man-radio"></input>
               <label
-                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
+                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
                 htmlFor="man-radio"
               >
                 Man
               </label>
-              <input type="radio" htmlFor="woman-radio"></input>
+              <input
+                type="radio"
+                id="man-radio"
+                value="man"
+                name="gender_identity"
+                checked={false}
+                onChange={handleChangeText}
+              ></input>
               <label
-                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
+                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
                 htmlFor="woman-radio"
               >
                 Woman
               </label>
-              <input type="radio" htmlFor="more-readio"></input>
+              <input
+                type="radio"
+                id="woman-radio"
+                value="woman"
+                name="gender_identity"
+                checked={false}
+                onChange={handleChangeText}
+              ></input>
               <label
-                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
+                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
                 htmlFor="more-radio"
               >
                 More
               </label>
+              <input
+                type="radio"
+                id="more-radio"
+                value="more"
+                name="gender_identity"
+                checked={false}
+                onChange={handleChangeText}
+              ></input>
             </div>
           </div>
 
           <div className="flex flex-col self-right">
-            <label>I am interested in...</label>
+            <label>I am interseted in...</label>
             <div
               className={
                 "multiple-option-container" + " flex flex-row gap-5 text-center"
               }
             >
-              <input type="radio" htmlFor="man-radio"></input>
               <label
-                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
-                htmlFor="man-radio"
+                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
+                htmlFor="man-interest-radio"
               >
                 Man
               </label>
-              <input type="radio" htmlFor="woman-radio"></input>
+              <input
+                type="radio"
+                id="man-interest-radio"
+                value="man"
+                name="gender_interest"
+                checked={false}
+                onChange={handleChangeText}
+              ></input>
               <label
-                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
-                htmlFor="woman-radio"
+                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
+                htmlFor="woman-interest-radio"
               >
                 Woman
               </label>
-              <input type="radio" htmlFor="more-readio"></input>
+              <input
+                type="radio"
+                id="woman-interest-radio"
+                value="woman"
+                name="gender_interest"
+                checked={false}
+                onChange={handleChangeText}
+              ></input>
               <label
-                className="p-3 w-[100px] rounded-lg border-2 border-gray-300 "
-                htmlFor="more-radio"
+                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
+                htmlFor="more-interest-radio"
               >
                 More
               </label>
+              <input
+                type="radio"
+                id="more-interest-radio"
+                value="more"
+                name="gender_interest"
+                checked={false}
+                onChange={handleChangeText}
+              ></input>
             </div>
           </div>
 
@@ -181,7 +229,12 @@ function OnBoarding() {
             <label htmlFor="gender-profile-display">
               Show gender on my profile
             </label>
-            <input id="gender-profile-display" type="checkbox"></input>
+            <input
+              id="gender-profile-display"
+              type="checkbox"
+              name="show_gender"
+              onChange={handleChangeText}
+            ></input>
           </div>
 
           <div className="flex flex-col">
@@ -218,6 +271,11 @@ function OnBoarding() {
               "p-3 w-[75%] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
             }
           />
+          <div>
+            {formData.url && (
+              <img className="h-[400px] w-[400px]" src={formData.url}></img>
+            )}
+          </div>
         </section>
       </header>
     </div>
