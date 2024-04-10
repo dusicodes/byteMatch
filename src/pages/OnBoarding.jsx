@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import PrimaryInput from "../components/PrimaryInput";
 import { useState } from "react";
+
 // this is a test comment for commit
 function OnBoarding() {
   const [formData, setFormData] = useState({
@@ -13,10 +14,19 @@ function OnBoarding() {
     show_gender: false,
     gender_identity: "",
     gender_interest: "",
+    field_interest: "",
+    programming_languages: [],
+    gitub: "",
+    programming_experience: "",
+    marital_status: "",
+    school: "",
+    location: "",
     url: "",
     about: "",
     matches: [],
   });
+
+  const gender_list = ["Man", "Woman", "Transgender", "More"];
 
   const handleSubmit = () => {
     console.log("submitted");
@@ -38,16 +48,16 @@ function OnBoarding() {
   console.log(formData);
 
   return (
-    <div className="h-screen flex flex-col justify-center">
+    <div className="h-full flex flex-col justify-center">
       <Navbar setModal={() => {}} showModal={false} minimal={true} />
 
       <h1 className=" text-center font-extrabold italic text-5xl mt-10">
-        Create Account
+        Create your profile
       </h1>
       <header className="flex flex-row self-center w-[75%] h-full mt-24">
-        <section className="flex flex-col w-[50%] gap-6 ">
+        <section className="flex flex-col w-[50%] gap-4 ">
           <div className="flex flex-row gap-5 self-start justify-evenly">
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-6">
               <label htmlFor="first-name">First Name</label>
               <PrimaryInput
                 required={true}
@@ -62,7 +72,7 @@ function OnBoarding() {
                 }
               />
             </div>
-            <div className=" flex flex-col">
+            <div className=" flex flex-col gap-6">
               <label htmlFor="last-name">Last Name</label>
               <PrimaryInput
                 required={true}
@@ -78,181 +88,134 @@ function OnBoarding() {
               />
             </div>
           </div>
-          <div className="flex flex-col">
-            <label>Birthday</label>
-            <div className=" flex flex-row gap-4">
-              <PrimaryInput
-                required={true}
-                id="dob-day"
-                type="number"
-                placeholder="DD"
-                name="dob_day"
-                value={formData.dob_day}
-                onChange={handleChangeText}
-                styles={
-                  "p-4 w-[125px] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
-                }
-              />
-              <PrimaryInput
-                required={true}
-                id="dob-month"
-                type="number"
-                placeholder="MM"
-                name="dob_month"
-                value={formData.dob_month}
-                onChange={handleChangeText}
-                styles={
-                  "p-4 w-[125px] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
-                }
-              />
-              <PrimaryInput
-                required={true}
-                id="dob-year"
-                type="number"
-                placeholder="YYYY"
-                name="dob_year"
-                value={formData.dob_year}
-                onChange={handleChangeText}
-                styles={
-                  "p-4 w-[125px] rounded-lg border-2 border-gray-300 focus:outline-gray-4 w-[100px]00"
-                }
-              />
-            </div>
-          </div>
 
-          <div className="flex flex-col self-right">
-            <label>Gender</label>
-            <div
-              className={
-                "multiple-option-container" + " flex flex-row gap-5 text-center"
-              }
-            >
-              <input
-                type="radio"
-                id="man-radio"
-                value="man"
-                name="gender_identity"
-                checked={formData.gender_identity == "man"}
-                onChange={handleChangeText}
-              ></input>
-              <label
-                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2  border-gray-300"
-                htmlFor="man-radio"
-              >
-                Man
-              </label>
-
-              <input
-                type="radio"
-                id="woman-radio"
-                value="woman"
-                name="gender_identity"
-                checked={formData.gender_identity == "woman"}
-                onChange={handleChangeText}
-              ></input>
-              <label
-                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
-                htmlFor="woman-radio"
-              >
-                Woman
-              </label>
-
-              <input
-                type="radio"
-                id="more-radio"
-                value="more"
-                name="gender_identity"
-                checked={formData.gender_identity == "more"}
-                onChange={handleChangeText}
-              ></input>
-              <label
-                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
-                htmlFor="more-radio"
-              >
-                More
-              </label>
-            </div>
-          </div>
-
-          <div className="flex flex-col self-right">
-            <label>I am interseted in...</label>
-            <div
-              className={
-                "multiple-option-container" + " flex flex-row gap-5 text-center"
-              }
-            >
-              <input
-                type="radio"
-                id="man-interest-radio"
-                value="man"
-                name="gender_interest"
-                checked={formData.gender_interest == "man"}
-                onChange={handleChangeText}
-              ></input>
-              <label
-                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300"
-                htmlFor="man-interest-radio"
-              >
-                Man
-              </label>
-
-              <input
-                type="radio"
-                id="woman-interest-radio"
-                value="woman"
-                name="gender_interest"
-                checked={formData.gender_interest == "woman"}
-                onChange={handleChangeText}
-              ></input>
-              <label
-                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
-                htmlFor="woman-interest-radio"
-              >
-                Woman
-              </label>
-
-              <input
-                type="radio"
-                id="more-interest-radio"
-                value="more"
-                name="gender_interest"
-                checked={formData.gender_interest == "more"}
-                onChange={handleChangeText}
-              ></input>
-              <label
-                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
-                htmlFor="more-interest-radio"
-              >
-                More
-              </label>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-start gap-5">
-            <label htmlFor="gender-profile-display">
-              Show gender on my profile
-            </label>
-            <input
-              id="gender-profile-display"
-              type="checkbox"
-              name="show_gender"
-              onChange={handleChangeText}
-            ></input>
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="about-me">About Me</label>
+          <label>Birthday</label>
+          <div className=" flex flex-row gap-4">
             <PrimaryInput
-              id="about-me"
-              placeholder="I like programming..."
-              name="about"
-              value={formData.about}
+              required={true}
+              id="dob-day"
+              type="number"
+              placeholder="DD"
+              name="dob_day"
+              value={formData.dob_day}
               onChange={handleChangeText}
               styles={
-                "p-4 w-[90%] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
+                "p-4 w-[125px] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
+              }
+            />
+            <PrimaryInput
+              required={true}
+              id="dob-month"
+              type="number"
+              placeholder="MM"
+              name="dob_month"
+              value={formData.dob_month}
+              onChange={handleChangeText}
+              styles={
+                "p-4 w-[125px] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
+              }
+            />
+            <PrimaryInput
+              required={true}
+              id="dob-year"
+              type="number"
+              placeholder="YYYY"
+              name="dob_year"
+              value={formData.dob_year}
+              onChange={handleChangeText}
+              styles={
+                "p-4 w-[125px] rounded-lg border-2 border-gray-300 focus:outline-gray-4 w-[100px]00"
               }
             />
           </div>
+
+          <label>Gender</label>
+          <div className={" flex flex-row gap-5 text-center"}>
+            {gender_list.map((gender) => {
+              const gender_lower = gender.toLowerCase();
+              return (
+                <div key={gender} className="multiple-option-container">
+                  <input
+                    key={gender}
+                    type="radio"
+                    id={`${gender_lower}-radio`}
+                    value={gender_lower}
+                    name="gender_identity"
+                    checked={formData.gender_identity == gender_lower}
+                    onChange={handleChangeText}
+                  ></input>
+                  <label
+                    className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300"
+                    htmlFor={`${gender_lower}-radio`}
+                  >
+                    {gender}
+                  </label>
+                </div>
+              );
+            })}
+          </div>
+
+          <label>I am interseted in...</label>
+          <div className={" flex flex-row gap-5 text-center"}>
+            {gender_list.map((gender) => {
+              const gender_lower = gender.toLowerCase();
+              return (
+                <div key={gender} className="multiple-option-container">
+                  <input
+                    key={gender}
+                    type="radio"
+                    id={`${gender_lower}-interest-radio`}
+                    value={gender_lower}
+                    name="gender_interest"
+                    checked={formData.gender_interest == gender_lower}
+                    onChange={handleChangeText}
+                  ></input>
+                  <label
+                    className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300"
+                    htmlFor={`${gender_lower}-interest-radio`}
+                  >
+                    {gender}
+                  </label>
+                </div>
+              );
+            })}
+          </div>
+
+          <label htmlFor="about-me">Field of Interest</label>
+          <PrimaryInput
+            id="field-interest"
+            placeholder="Web Developer"
+            name="field_interest"
+            value={formData.field_interest}
+            onChange={handleChangeText}
+            styles={
+              "p-4 w-[90%] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
+            }
+          />
+
+          <label htmlFor="gender-profile-display">
+            Show gender on my profile
+          </label>
+          <input
+            id="gender-profile-display"
+            type="checkbox"
+            name="show_gender"
+            onChange={handleChangeText}
+            className=" self-start"
+          ></input>
+
+          <label htmlFor="about-me">About Me</label>
+          <PrimaryInput
+            id="about-me"
+            placeholder="I like programming..."
+            name="about"
+            value={formData.about}
+            onChange={handleChangeText}
+            styles={
+              "p-4 w-[90%] rounded-lg border-2 border-gray-300 focus:outline-gray-400"
+            }
+          />
+
           <button
             className=" bg-blue-500 rounded-full p-4 text-white w-48 hover:bg-blue-300 self-center"
             onSubmit={handleSubmit}
