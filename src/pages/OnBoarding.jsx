@@ -11,8 +11,8 @@ function OnBoarding() {
     dob_month: "",
     dob_year: "",
     show_gender: false,
-    gender_identity: "man",
-    gender_interest: "woman",
+    gender_identity: "",
+    gender_interest: "",
     url: "",
     about: "",
     matches: [],
@@ -35,7 +35,6 @@ function OnBoarding() {
       [name]: value,
     }));
   };
-
   console.log(formData);
 
   return (
@@ -128,18 +127,27 @@ function OnBoarding() {
                 "multiple-option-container" + " flex flex-row gap-5 text-center"
               }
             >
-              <label
-                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
-                htmlFor="man-radio"
-              >
-                Man
-              </label>
               <input
                 type="radio"
                 id="man-radio"
                 value="man"
                 name="gender_identity"
-                checked={false}
+                checked={formData.gender_identity == "man"}
+                onChange={handleChangeText}
+              ></input>
+              <label
+                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2  border-gray-300"
+                htmlFor="man-radio"
+              >
+                Man
+              </label>
+
+              <input
+                type="radio"
+                id="woman-radio"
+                value="woman"
+                name="gender_identity"
+                checked={formData.gender_identity == "woman"}
                 onChange={handleChangeText}
               ></input>
               <label
@@ -148,12 +156,13 @@ function OnBoarding() {
               >
                 Woman
               </label>
+
               <input
                 type="radio"
-                id="woman-radio"
-                value="woman"
+                id="more-radio"
+                value="more"
                 name="gender_identity"
-                checked={false}
+                checked={formData.gender_identity == "more"}
                 onChange={handleChangeText}
               ></input>
               <label
@@ -162,14 +171,6 @@ function OnBoarding() {
               >
                 More
               </label>
-              <input
-                type="radio"
-                id="more-radio"
-                value="more"
-                name="gender_identity"
-                checked={false}
-                onChange={handleChangeText}
-              ></input>
             </div>
           </div>
 
@@ -180,18 +181,27 @@ function OnBoarding() {
                 "multiple-option-container" + " flex flex-row gap-5 text-center"
               }
             >
-              <label
-                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300 "
-                htmlFor="man-interest-radio"
-              >
-                Man
-              </label>
               <input
                 type="radio"
                 id="man-interest-radio"
                 value="man"
                 name="gender_interest"
-                checked={false}
+                checked={formData.gender_interest == "man"}
+                onChange={handleChangeText}
+              ></input>
+              <label
+                className="w-[100px] h-[50px] flex justify-center items-center rounded-lg border-2 border-gray-300"
+                htmlFor="man-interest-radio"
+              >
+                Man
+              </label>
+
+              <input
+                type="radio"
+                id="woman-interest-radio"
+                value="woman"
+                name="gender_interest"
+                checked={formData.gender_interest == "woman"}
                 onChange={handleChangeText}
               ></input>
               <label
@@ -200,12 +210,13 @@ function OnBoarding() {
               >
                 Woman
               </label>
+
               <input
                 type="radio"
-                id="woman-interest-radio"
-                value="woman"
+                id="more-interest-radio"
+                value="more"
                 name="gender_interest"
-                checked={false}
+                checked={formData.gender_interest == "more"}
                 onChange={handleChangeText}
               ></input>
               <label
@@ -214,14 +225,6 @@ function OnBoarding() {
               >
                 More
               </label>
-              <input
-                type="radio"
-                id="more-interest-radio"
-                value="more"
-                name="gender_interest"
-                checked={false}
-                onChange={handleChangeText}
-              ></input>
             </div>
           </div>
 
