@@ -9,3 +9,6 @@
 .multiple-option-container input[type="radio"] {
   display: none;
 }
+.multiple-option-container input[type="radio"]:checked + label {
+  border: solid 2px rgb(122, 8, 122);
+}
